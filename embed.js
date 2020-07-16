@@ -21,3 +21,17 @@ const postSchema = new mongoose.Schema({
   content: String
 });
 const Post = mongoose.model("Post", postSchema);
+
+// check if user model works
+// const newUser = new User({
+//   email: 'charlie@brown.edu',
+//   name: 'Charlie'
+// });
+
+// newUser.save(function(err, user) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(user);
+//   }
+// });
