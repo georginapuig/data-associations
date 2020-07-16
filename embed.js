@@ -9,11 +9,15 @@ mongoose.connect('mongodb://localhost:27017/blog_demo', {
   .catch(error => console.log(error.message));
 
 // USER - email, name
-// schema setup
 const userSchema = new mongoose.Schema({
   email: String,
   name: String
 });
-
-// model
 const User = mongoose.model("User", userSchema);
+
+// POST - title, content
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String
+});
+const Post = mongoose.model("Post", postSchema);
