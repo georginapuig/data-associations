@@ -24,23 +24,23 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 // check if user model works
-const newUser = new User({
-  email: 'hermione@brown.edu',
-  name: 'Hermione'
-});
+// const newUser = new User({
+//   email: 'hermione@brown.edu',
+//   name: 'Hermione'
+// });
 
-newUser.posts.push({
-  title: 'How to potion',
-  content: 'jk, go to potions class to learn it'
-});
+// newUser.posts.push({
+//   title: 'How to potion',
+//   content: 'jk, go to potions class to learn it'
+// });
 
-newUser.save(function(err, user) {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(user);
-  }
-});
+// newUser.save(function(err, user) {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(user);
+//   }
+// });
 
 // check if post model works
 // const newPost = new Post({
@@ -55,3 +55,11 @@ newUser.save(function(err, user) {
 //     console.log(post);
 //   }
 // });
+
+User.findOne({name: 'Hermione'}, function(err, user) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(user);
+  }
+});
