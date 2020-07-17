@@ -28,7 +28,27 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
-User.create({
-  email: 'bob@gmail.com',
-  name: 'Bob Belcher'
+// User.create({
+//   email: 'bob@gmail.com',
+//   name: 'Bob Belcher'
+// });
+
+Post.create({
+  title: 'How to cook the best burguer pt. 3',
+  content: 'lalalala alallala'
+}, function(err, post) {
+  User.findOne({email: 'bob@gmail.com'}, function(err, foundUser) {
+    if (err) {
+      console.log(err);
+    } else {
+      foundUser.posts.push(post);
+      foundUser.save(function(err, data) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(data);
+        }
+      });
+    }
+  });
 });
