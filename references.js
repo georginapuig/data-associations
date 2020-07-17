@@ -27,3 +27,8 @@ const userSchema = new mongoose.Schema({
   ]
 });
 const User = mongoose.model("User", userSchema);
+
+User.create({
+  email: 'bob@gmail.com',
+  name: 'Bob Belcher'
+});
