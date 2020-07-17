@@ -8,13 +8,6 @@ mongoose.connect('mongodb://localhost:27017/blog_demo', {
   .then(() => console.log('Connected to DB!'))
   .catch(error => console.log(error.message));
 
-// USER - email, name
-const userSchema = new mongoose.Schema({
-  email: String,
-  name: String
-});
-const User = mongoose.model("User", userSchema);
-
 // POST - title, content
 const postSchema = new mongoose.Schema({
   title: String,
@@ -22,20 +15,34 @@ const postSchema = new mongoose.Schema({
 });
 const Post = mongoose.model("Post", postSchema);
 
+// USER - email, name
+const userSchema = new mongoose.Schema({
+  email: String,
+  name: String,
+  posts: [postSchema]
+});
+const User = mongoose.model("User", userSchema);
+
 // check if user model works
-// const newUser = new User({
-//   email: 'charlie@brown.edu',
-//   name: 'Charlie'
-// });
+const newUser = new User({
+  email: 'hermione@brown.edu',
+  name: 'Hermione'
+});
 
-// newUser.save(function(err, user) {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log(user);
-//   }
-// });
+newUser.posts.push({
+  title: 'How to potion',
+  content: 'jk, go to potions class to learn it'
+});
 
+newUser.save(function(err, user) {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(user);
+  }
+});
+
+// check if post model works
 // const newPost = new Post({
 //   title: 'Reflections on apple',
 //   content: 'They are delicious'
