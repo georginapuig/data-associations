@@ -65,12 +65,12 @@ User.findOne({name: 'Hermione'}, function(err, user) {
       title: 'blog post',
       content: 'this is a  blog post'
     });
-    user.save(function(err, user) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(user);
-      }
-    });
+    // user.save(function(err, user) {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log(user);
+    //   }
+    // });
   }
 });
